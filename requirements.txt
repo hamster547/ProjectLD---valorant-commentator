@@ -1,0 +1,9 @@
+python 3.14.8
+ollama
+numpy
+PyQt6
+mss
+opencv-python
+easyocr
+kokoro-onnx
+sounddevice
