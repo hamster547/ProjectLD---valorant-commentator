@@ -10,7 +10,7 @@ LD stand for little devil, which is a nickname i had for my best friend.
 
 He used to keep me company when i played games, so i made this project to show my appreciation to him
 
-Love you, little devil. Im really glad i met you.
+Love and miss you, little devil. Im really glad i met you.
 
 
 
