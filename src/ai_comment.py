@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent   # the folder this .py file i
 PROMPTS = {
 	"roast": BASE_DIR / "resources/prompt_templates/roaster.txt",
 	"high low": BASE_DIR / "resources/prompt_templates/supporter.txt",
-	"advance kymasu roaster": BASE_DIR / "prompt_templates/advance_kymasu_roaster.txt"
+	"advance kymasu roaster": BASE_DIR / "resources/prompt_templates/advance_kymasu_roaster.txt"
 }
 
 def load_base_prompt(prompt_file):
