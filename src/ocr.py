@@ -1,12 +1,15 @@
 import cv2
+import torch
 import easyocr
 import numpy as np
 from weapon_matcher import identify_weapon
 
+USE_GPU = torch.cuda.is_available()
+print("OCR running on:", "GPU" if USE_GPU else "CPU")
 
 class OCR:
 	def __init__(self):
-		self.reader = easyocr.Reader(["en"], gpu=True)
+		self.reader = easyocr.Reader(["en"], gpu=USE_GPU)
 		self._warmup()
 
 	def _warmup(self):
