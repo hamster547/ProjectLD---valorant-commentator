@@ -12,8 +12,9 @@ if not defined PY (
 )
 if not defined PY (
   echo Python 3.14 was not found.
-  echo Install it from https://www.python.org/downloads/
-  echo and tick "Add python.exe to PATH" in the installer, then run this again.
+  echo Install the Python install manager from https://www.python.org/downloads/
+  echo then open a NEW window and run:  py install 3.14
+  echo After that, run install.bat again.
   goto fail
 )
 
@@ -63,10 +64,10 @@ python -c "import easyocr; easyocr.Reader(['en'], gpu=False)"
 if errorlevel 1 goto fail
 
 rem ---------- 8. Voice files ----------
-if not exist resources mkdir resources
-call :download "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx" "resources\kokoro-v1.0.onnx" "the voice model, about 310 MB"
+if not exist resources\voices mkdir resources\voices
+call :download "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx" "resources\voices\kokoro-v1.0.onnx" "the voice model, about 310 MB"
 if errorlevel 1 goto fail
-call :download "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin" "resources\voices-v1.0.bin" "the voice list, about 28 MB"
+call :download "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin" "resources\voices\voices-v1.0.bin" "the voice list, about 28 MB"
 if errorlevel 1 goto fail
 
 echo.

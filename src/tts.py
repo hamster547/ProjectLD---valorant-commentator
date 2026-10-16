@@ -1,4 +1,5 @@
 import io
+import sys
 import os
 import subprocess
 from kokoro_onnx import Kokoro

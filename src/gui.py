@@ -1,5 +1,8 @@
+import os
 import sys
+import ctypes
 import threading
+from datetime import datetime
 import time
 import random
 from avatar import AvatarOverlay
@@ -23,6 +26,45 @@ from PyQt6.QtWidgets import (
 )
 from main import Pipeline, pipeline_config, tts_queue
 from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent.parent
+LOG_FILE = ROOT_DIR / "error.log"
+
+# Start a fresh file if the old one has grown big, so it never fills the disk
+if LOG_FILE.exists() and LOG_FILE.stat().st_size > 1_000_000:
+	LOG_FILE.unlink()
+
+# Without a terminal, Python has no place to send print() output or warnings.
+# Throw the prints away, and send warnings/errors from libraries to the log.
+if sys.stdout is None:
+	sys.stdout = open(os.devnull, "w")
+if sys.stderr is None:
+	sys.stderr = open(LOG_FILE, "a", encoding="utf-8", buffering=1)
+
+
+def _write_crash(exc_type, exc, tb, where):
+	text = "".join(traceback.format_exception(exc_type, exc, tb))
+	with open(LOG_FILE, "a", encoding="utf-8") as f:
+		f.write(f"\n[{datetime.now():%Y-%m-%d %H:%M:%S}] {where}\n{text}")
+	return text
+
+
+def _main_crash(exc_type, exc, tb):
+	text = _write_crash(exc_type, exc, tb, "crash in main program")
+	if sys.__stderr__ is not None:          # normal terminal run: also show it there
+		sys.__stderr__.write(text)
+	ctypes.windll.user32.MessageBoxW(
+		0, "The app hit an error. Details were saved to error.log.",
+		"Valorant Commentator", 0x10)       # shows a small popup window
+
+
+def _thread_crash(args):
+	_write_crash(args.exc_type, args.exc_value, args.exc_traceback,
+			f"crash in background thread '{args.thread.name if args.thread else '?'}'")
+
+
+sys.excepthook = _main_crash
+threading.excepthook = _thread_crash
 
 BASE_DIR = Path(__file__).resolve().parent.parent   # the folder this .py file is in
 
