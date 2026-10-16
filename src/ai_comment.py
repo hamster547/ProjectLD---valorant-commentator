@@ -1,6 +1,7 @@
 import ollama
 import subprocess
 import time
+import random
 import re
 from collections import deque
 from pathlib import Path
@@ -12,6 +13,15 @@ PROMPTS = {
 	"high low": BASE_DIR / "resources/prompt_templates/supporter.txt",
 	"advance kymasu roaster": BASE_DIR / "resources/prompt_templates/advance_kymasu_roaster.txt"
 }
+
+
+KYMASU_PROMPTS = [
+	"Proceed to roast Kymasu.",
+	"Roast Kymasu like a disappointed coach who has seen enough.",
+	"Roast Kymasu like a sports commentator who has completely given up.",
+	"Give Kymasu a backhanded compliment about his Valorant gameplay.",
+	"Roast Kymasu with one dry, deadpan line."
+]
 
 def load_base_prompt(prompt_file):
 	with open(prompt_file, "r", encoding="utf-8") as f:
@@ -94,14 +104,14 @@ class Commentator:
 		except Exception as e:
 			print(f"Error: {e}")
 
-	
+
 	def kymasu_comment(self, tries=3):
 		text = None
 		for _ in range(tries):
 			raw = ollama.generate(
 				model=self.model_name,
 				system=self.prompt_base,
-				prompt="proceed to roast Kymasu",
+				prompt=random.choice(KYMASU_PROMPTS),
 				options={
 					"temperature": 1.0,
 					"top_p": 0.95,

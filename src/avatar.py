@@ -136,7 +136,7 @@ class AvatarOverlay(QWidget):
 
         # 4. Now snap position to bottom left cleanly in a single pass!
         screen_height = 1440  # or QApplication.primaryScreen().geometry().height()
-        self.move(50, screen_height - total_size)
+        self.move(0, screen_height - total_size)
 
         self.reload_sprites()
 
