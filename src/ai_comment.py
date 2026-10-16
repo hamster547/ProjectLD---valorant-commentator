@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent   # the folder this .py file i
 
 PROMPTS = {
 	"roast": BASE_DIR / "resources/prompt_templates/roaster.txt",
-	"hype": BASE_DIR / "resources/prompt_templates/supporter.txt",
+	"high low": BASE_DIR / "resources/prompt_templates/supporter.txt",
 	"advance kymasu roaster": BASE_DIR / "prompt_templates/advance_kymasu_roaster.txt"
 }
 

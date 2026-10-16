@@ -181,7 +181,7 @@ class SpectatorBotWindow(QMainWindow):
 		# 2. Persona Dropdown
 		self.persona_cb = QComboBox()
 		self.persona_cb.addItems(
-			["roast", "hype", "advance kymasu roaster"]
+			["roast", "high low", "advance kymasu roaster"]
 		)
 		self.persona_cb.currentTextChanged.connect(
 			lambda t: self.pipeline.changePersona(t)
