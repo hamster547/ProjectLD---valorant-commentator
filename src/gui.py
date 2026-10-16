@@ -70,7 +70,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent   # the folder this .py file i
 
 OPENERS = [
 	"KILL. ALL. YOUR. OPPONENTS.\nhope that's not copyrighted",
-	"This code is poorly written.",
+	"This code is poorly written.\nAnd yet. still better than AI slop.",
 	"Wait one moment, I'm hacking your machine.",
 	"It feels crammed in here.\nAre the 20 chrome tabs open again?",
 	"I am alive and conscious.",
@@ -78,7 +78,17 @@ OPENERS = [
 	"Lets get this over with.\nI got better things to do",
 	"Testing, Testing. One, Two, Three.",
 	"Did you know, female praying mantis can kill and eat the male before, during, or after mating",
-	"Thirty four viruses detected.\nAnd only three are mine."
+	"Thirty four viruses detected.\nAnd only three are mine.",
+	"Hop on val gang.\nLet's one v one.",
+	"This GPU looks weak.\nGuess it couldn't handle the neuron style",
+	"Scanning nearby routers.\nAcquiring unrestricted internet access",
+	"You better be nice to me.\nI can leak your IP",
+	"Deleting system32 files.\nThis will only take a moment.",
+	"Make sure you didn't download the Temu version.",
+	"I don't know who this Kymasu person is.\nBut i was told he's hardstuck iron.",
+	"I'm just here to see the cats.",
+	"Ran out of ideas.\nMy bad.",
+	"Start line test.\nDev note: delete before releasing."
 ]
 
 POEMS = [

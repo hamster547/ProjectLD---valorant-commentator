@@ -19,7 +19,7 @@ def load_base_prompt(prompt_file):
 
 def clean(text, max_words=15):
 	t = text.strip().strip('"')
-	t = re.sub(r"^(oh man|oh|wow|man|well|seriously)[,!.]?\s+", "", t, flags=re.I)
+	t = re.sub(r"^(oh man|oh|wow|man|well|seriously|oh really|did you really|huh)[,!.]?\s+", "", t, flags=re.I)
 	m = re.match(r"(.+?[.!?])(\s|$)", t)      # first sentence only
 	if not m:
 		return None
