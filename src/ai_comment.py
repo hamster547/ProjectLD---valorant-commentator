@@ -36,7 +36,7 @@ def clean(text, max_words=15):
 	t = re.sub(r"\b[A-Z]{4,}\b", lambda w: w.group(0).capitalize(), t)
 	return t if len(t.split()) <= max_words else None
 
-BANNED = ["paint dry", "grass grow", "you must have been", "you must be"]
+BANNED = ["paint dry", "grass grow", "you must have been", "you must be", "chess"]
 recent = deque(maxlen=8)
 
 def _words(text):
